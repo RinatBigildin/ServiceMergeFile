@@ -1,0 +1,58 @@
+modified -> using System;
+modified -> using System.Collections.Generic;
+modified -> using System.IO;
+modified -> using System.Linq;
+modified -> using System.Text;
+modified -> using System.Threading.Tasks;
+modified -> using Microsoft.VisualStudio.TestTools.UnitTesting;
+modified -> using ServiceMergeFile.Core;
+modified -> using static System.Net.Mime.MediaTypeNames;
+modified -> 
+modified -> namespace ServiceMergeFile.Tests
+modified -> {
+modified ->     [TestClass]
+modified ->     public class MergeFileTests
+modified ->     {
+modified ->         [TestMethod]
+modified ->         [
+                DataRow(
+                    new[] { "    Hello World    " },
+                    new[] { "    Hello World!   " },
+                    new[] { "    Hello Worlds    " },
+                    "Конфликт"),
+
+modified ->                 DataRow(
+modified ->                     new[] { "    Hello World    " },
+                new[] { "    Hello World!   " },
+                new[] { "    Hello World    " },
+                "Hello World!"),
+            DataRow(
+                new[] { "    Hello World    " },
+                new[] { "    Hello World   " },
+                new[] { "    Hello Worlds    " },
+                "Hello Worlds"),
+        DataRow(
+        new[] { "    Hello World    " },
+        new[] { "    Hello World   ", "  The Good " },
+        new[] { "    Hello Worlds    " },
+        "The Good "),
+                DataRow(
+                    new[] { "    Hello World    " },
+                    new string[] {},
+                    new string[] { },
+                    "Конфликт ")
+        ]
+        public void Can_Merge_Text( string[] source, string[] modified1, string[] modified2, string assertResult)
+        {
+            //arrange
+            //action
+            IMergeFile mergeFile = new MergeFile(new CheckedRowText(), new ResultCheckedText());
+            var result = mergeFile.Merge(source, modified1, modified2);
+            //assert
+            Assert.IsTrue(result.Contains(assertResult));
+        }
+
+modified ->         }
+modified ->     }
+
+

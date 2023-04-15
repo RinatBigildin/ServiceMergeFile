@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceMergeFile", "ServiceMergeFile\ServiceMergeFile.csproj", "{7C561591-3766-4055-9D70-4341A57358EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceMergeFile.Tests", "ServiceMergeFile.Tests\ServiceMergeFile.Tests.csproj", "{FC4BC30D-3F8C-41AA-B7A1-9FF281A3FFF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C561591-3766-4055-9D70-4341A57358EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C561591-3766-4055-9D70-4341A57358EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C561591-3766-4055-9D70-4341A57358EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C561591-3766-4055-9D70-4341A57358EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC4BC30D-3F8C-41AA-B7A1-9FF281A3FFF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4BC30D-3F8C-41AA-B7A1-9FF281A3FFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4BC30D-3F8C-41AA-B7A1-9FF281A3FFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4BC30D-3F8C-41AA-B7A1-9FF281A3FFF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8070EB86-9C71-41B4-9718-7FDCBB70EA04}
+	EndGlobalSection
+EndGlobal

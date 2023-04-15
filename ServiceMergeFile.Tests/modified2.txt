@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ServiceMergeFile.Core;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace ServiceMergeFile.Tests
+{
+    [TestClass]
+    public class MergeFileTests
+    {
+        [TestMethod]
+        [
+                DataRow(
+                    new[] { "    Hello World    " },
+                    new[] { "    Hello World!   " },
+                    new[] { "    Hello Worlds    " },
+                    "Конфликт"),
+
+            DataRow(
+                new[] { "    Hello World    " },
+                new[] { "    Hello World!   " },
+                new[] { "    Hello World    " },
+                "Hello World!"),
+            DataRow(
+                new[] { "    Hello World    " },
+                new[] { "    Hello World   " },
+                new[] { "    Hello Worlds    " },
+                "Hello Worlds"),
+        DataRow(
+        new[] { "    Hello World    " },
+        new[] { "    Hello World   ", "  The Good " },
+        new[] { "    Hello Worlds    " },
+        "The Good "),
+                DataRow(
+                    new[] { "    Hello World    " },
+                    new string[] {},
+                    new string[] { },
+                    "Конфликт ")
+        ]
+        public void Can_Merge_Text( string[] source, string[] modified1, string[] modified2, string assertResult)
+        {
+            
+
+
+
+
+
+
+//arrange
+            //action
+            IMergeFile mergeFile = new MergeFile(new CheckedRowText(), new ResultCheckedText());
+            var result = mergeFile.Merge(source, modified1, modified2);
+            //assert
+            Assert.IsTrue(result.Contains(assertResult));
+        }
+
+    }
+}
