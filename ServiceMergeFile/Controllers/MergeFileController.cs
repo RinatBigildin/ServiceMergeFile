@@ -3,12 +3,13 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using ServiceMergeFile.Core;
 using System.Text;
+using System.IO;
 
 namespace ServiceMergeFile.Controllers
 {
     [ApiController]
     [Route("api/mergefiles")]
-    public class MergeFileController
+    public class MergeFileController: Controller
     {
         private readonly ILogger<MergeFileController> _logger;
         private readonly IMergeFile? _mergeFile;
@@ -66,7 +67,7 @@ namespace ServiceMergeFile.Controllers
             }
 
 
-            string nameFile = source.FileName;
+            string nameFileResult = "result" + Path.GetExtension(source.FileName);
 
             var sourceFile = await _fileService.ReadFileAsync(source, cancellationToken);
 
@@ -81,8 +82,7 @@ namespace ServiceMergeFile.Controllers
             var mergeFile = await _mergeFile.MergeAsync(sourceFile, modified1File, modified2File);
 
 
-            //return new FileContentResult(Encoding.UTF8.GetBytes(mergeFile), "application/octet-stream");
-            return new FileContentResult(Encoding.UTF8.GetBytes(mergeFile), "plain/text");
+            return new File(Encoding.UTF8.GetBytes(mergeFile), "plain/text", nameFileResult);
         }
 
 
