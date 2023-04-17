@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+21﻿using System.ComponentModel.DataAnnotations;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using ServiceMergeFile.Core;
@@ -82,7 +82,7 @@ namespace ServiceMergeFile.Controllers
             var mergeFile = await _mergeFile.MergeAsync(sourceFile, modified1File, modified2File);
 
 
-            return new File(Encoding.UTF8.GetBytes(mergeFile), "plain/text", nameFileResult);
+            return File(Encoding.UTF8.GetBytes(mergeFile), "plain/text", nameFileResult);
         }
 
 
